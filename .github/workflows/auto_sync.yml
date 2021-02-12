@@ -19,5 +19,5 @@ jobs:
       - run: "echo latest release: ${{ fromJson(steps.get_latest_release.outputs.data) }}"
       - run: "echo latest release: ${{ fromJson(steps.get_latest_release.outputs.data)[0].auto_merge != null }}"
       - run: |
-        for item in fromJson(steps.get_latest_release.outputs.data):
-        print (item.auto_merge != null)
+          for item in fromJson(steps.get_latest_release.outputs.data):
+            print (item.auto_merge != null)
