@@ -1,4 +1,4 @@
-name: autoupdate
+name: auto-sync
 on:
   push:
     branches:
@@ -14,10 +14,10 @@ jobs:
         route: GET /repos/:repository/pulls
         repository: ${{ github.repository }}
       env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
-    - name: echo results
-    - uses: octokit/request-action@v2.x
-    - run: |
+      - name: echo results
+      - uses: octokit/request-action@v2.x
+      - run: |
         echo "Hello Github!"
         echo "It's lovely to be here! ${{ fromJson(steps.get_pull_request_ref.outputs.data) }}"
