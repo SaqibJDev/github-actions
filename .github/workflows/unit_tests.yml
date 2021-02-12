@@ -1,0 +1,13 @@
+name: unit_tests
+on:
+  pull_request: # Triggers the workflow on pull request to alpha, beta, master
+    branches:
+      - alpha
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo "Hello Github!"
+        echo "It's lovely to be here!"
