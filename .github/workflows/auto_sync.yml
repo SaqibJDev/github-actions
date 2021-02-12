@@ -8,10 +8,11 @@ jobs:
   auto-sync:
     runs-on: ubuntu-latest
     steps:
-      - name: get pull request ref
-        uses: octokit/request-action@v2.x
+      - uses: octokit/request-action@v2.x
+        id: get_latest_release
         with:
           route: GET /repos/:repository/pulls
           repository: ${{ github.repository }}
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+      - run: "echo latest release: ${{ steps.get_latest_release.outputs.data }}"
