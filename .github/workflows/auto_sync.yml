@@ -8,7 +8,8 @@ jobs:
   auto-sync:
     runs-on: ubuntu-latest
     steps:
-      - uses: octokit/request-action@v2.x
+      - name: get pull request ref
+        uses: octokit/request-action@v2.x
         with:
           route: GET /repos/:repository/pulls
           repository: ${{ github.repository }}
