@@ -1,0 +1,23 @@
+name: autoupdate
+on:
+  push:
+    branches:
+      - alpha
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+jobs:
+  auto-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: auto-sync
+      - uses: octokit/request-action@v2.x
+      with:
+        route: GET /repos/:repository/pulls
+        repository: ${{ github.repository }}
+      env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+
+    - name: echo results
+    - uses: octokit/request-action@v2.x
+    - run: |
+        echo "Hello Github!"
+        echo "It's lovely to be here! ${{ fromJson(steps.get_pull_request_ref.outputs.data) }}"
