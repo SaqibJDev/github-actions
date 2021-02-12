@@ -20,7 +20,7 @@ jobs:
       - run: "echo latest release: ${{ fromJson(steps.get_latest_release.outputs.data)[0].auto_merge != null }}"
       - run: |
         arr=()
-        for item in ${{ fromJson(steps.get_latest_release.outputs.data) }}
+        for item in ${{ fromJson(steps.get_latest_release.outputs.data) }}:
         do
           arr+=item
         done
